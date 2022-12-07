@@ -1,7 +1,6 @@
 elves = list()
-
 # convert our elves to a list of lists
-with open("./input_day01") as fh:
+with open("./input") as fh:
     elves = [sum(map(int, elf_data.splitlines())) for elf_data in fh.read().split('\n\n')]
    
         
