@@ -1,6 +1,9 @@
+import os
+from pathlib import Path
+
 elves = list()
 # convert our elves to a list of lists
-with open("./input") as fh:
+with open(Path(os.path.dirname(__file__)) / "input", encoding="utf8") as fh:
     elves = [sum(map(int, elf_data.splitlines())) for elf_data in fh.read().split('\n\n')]
    
         
