@@ -70,3 +70,25 @@ def score2(elf, desired):
         return winners[winners[elf_move]] + Result.Win
     
 print("%s : %s" % (q2, sum([score2(*moves) for moves in data])))
+
+
+import sys
+if sys.version_info.major >= 3 and sys.version_info.minor >= 10:
+
+    def score2(elf, desired):
+        elf_move = elf_decoder[elf]
+        desired_result = desired_decoder[desired]
+
+        match desired_result:
+            case Result.Draw
+                return elf_move + Result.Draw
+            case Result.Lose:
+                return winners[elf_move] + Result.Lose
+            case Result.Win:
+                return winners[winners[elf_move]] + Result.Win
+            case Result:
+                raise ValueError
+            case _:
+                raise TypeError
+    
+    print_result(q2, sum([score2(*moves) for moves in data]))
